@@ -24,6 +24,9 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
+      - name: Give Maven Wrapper Execute Permission
+        run: chmod +x mvnw
+
       - name: Build with Maven
         env:
           SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}
