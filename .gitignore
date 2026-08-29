@@ -30,3 +30,6 @@ Thumbs.db
 
 # Eclipse generated files
 bin/
+
+# Application config
+src/main/resources/application.properties
