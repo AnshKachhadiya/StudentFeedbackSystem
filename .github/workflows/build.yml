@@ -25,4 +25,7 @@ jobs:
           cache: maven
 
       - name: Build with Maven
+        env:
+          SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}
+          SPRING_DATASOURCE_PASSWORD: ${{ secrets.DB_PASSWORD }}
         run: ./mvnw clean verify
