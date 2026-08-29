@@ -23,8 +23,14 @@ jobs:
           MYSQL_PASSWORD: ${{ secrets.DB_PASSWORD }}
         ports:
           - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
 
     steps:
+
       - name: Checkout Code
         uses: actions/checkout@v4
 
@@ -38,20 +44,9 @@ jobs:
       - name: Give Maven Wrapper Execute Permission
         run: chmod +x mvnw
 
-      - name: Wait for MySQL
-        run: |
-          for i in {1..30}; do
-            if mysqladmin ping -h 127.0.0.1 -P 3306 -u root -proot --silent; then
-              echo "MySQL is ready!"
-              break
-            fi
-            echo "Waiting for MySQL..."
-            sleep 2
-          done
-
       - name: Build with Maven
         env:
-          SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/student_feedback_db
+          SPRING_DATASOURCE_URL: jdbc:mysql://127.0.0.1:3306/student_feedback_db
           SPRING_DATASOURCE_USERNAME: ${{ secrets.DB_USERNAME }}
           SPRING_DATASOURCE_PASSWORD: ${{ secrets.DB_PASSWORD }}
         run: ./mvnw clean verify
