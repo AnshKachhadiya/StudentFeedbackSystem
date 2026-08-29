@@ -1,0 +1,29 @@
+# Java
+*.class
+
+# Maven
+target/
+!mvnw
+!mvnw.cmd
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# IntelliJ
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment / secrets
+.env
