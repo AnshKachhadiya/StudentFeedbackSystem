@@ -37,7 +37,7 @@ public class FacultyController {
 			
 			Faculty savedFaculty =  
 					facultyService.saveFaculty(faculty);
-			
+			 
 			return new ResponseEntity<>(
 					savedFaculty, HttpStatus.CREATED); 
 			
@@ -125,7 +125,7 @@ public class FacultyController {
 			 existingFaculty.setEmployeeId(faculty.getEmployeeId());
 			   
 			 Faculty updateFaculty = facultyService 
-						.saveFaculty(existingFaculty); 
+					 	.saveFaculty(existingFaculty); 
 			 
 			 return ResponseEntity.ok(updateFaculty); 
 			 
